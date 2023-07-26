@@ -1,9 +1,14 @@
 import { Landing, Events, Form, Info } from "./views";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import NavegationBar from "./components/navegationBar/navBar";
 
 function App() {
+    const location = useLocation();
+
     return (
         <div className="App">
+            {location.pathname !== "/dashboard" && <NavegationBar />}
+
             <Routes>
                 <Route exact path="/" element={<Landing />} />
                 <Route exact path="/events" element={<Events />} />
